@@ -11,7 +11,7 @@
 * optional: Hadoop and its ecosystem (HDFS, Yarn)
 * optional DB: Neo4j / Nebular Graph
 
-**3. Potential Graph Visualization Scenarios**
+##### 3. Potential Graph Visualization Scenarios
 
 spark -> gexf file -> Import Gephi -> visualization
 

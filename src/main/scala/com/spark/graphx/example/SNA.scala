@@ -28,33 +28,15 @@ object SparkGraph {
     }
 
     val graph = Graph(vertices, edges)
-    val pr = graph.pageRank(0.0001).vertices
-//    val s = pr.take(10)
-//    print(s)
     val ranks = graph.pageRank(0.0001).vertices
-//    ranks.take(10)
     ranks.take(5).foreach(println(_))
 //    graph.vertices.foreach(x => println(s"${x._1}-->${x._2}"))
 //    graph.edges.foreach(x => println(s"src:${x.srcId}，dst:${x.dstId},attr:${x.attr}"))
 
-//    println("numVertices" + graph.numVertices)
-//    println("numEdges" + graph.numEdges)
-//    graph.inDegrees.foreach(println)
-//    graph.outDegrees.foreach(println)
-    val relate: VertexRDD[List[Long]] = graph.aggregateMessages[List[Long]](
-      triplet => {
-        triplet.sendToDst(List(triplet.srcId))
-      },
-      (a,b) => (a++b)
-    ).filter(x => x._2.length > 1)
-
-    var re = relate.flatMap(x => {
-      for{temp <- ci}
-    })
-
+    println("numVertices" + graph.numVertices)
+    println("numEdges" + graph.numEdges)
+    graph.inDegrees.foreach(println)
+    graph.outDegrees.foreach(println)
   }
 
-  def commonFriend() = {
-
-  }
 }
